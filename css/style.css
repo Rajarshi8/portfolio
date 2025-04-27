@@ -1,0 +1,547 @@
+/********** Template CSS **********/
+:root {
+    /* Light mode variables */
+    --primary: #6244C5;
+    --secondary: #FFC448;
+    --light: #FAFAFB;
+    --dark: #12141D;
+    --text-color: #12141D;
+    --bg-color: #FFFFFF;
+    --bg-light: #FAFAFB;
+    --card-bg: #FFFFFF;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --heading-color: #000000;
+    --nav-text: #12141D;
+    --footer-text: #FFFFFF;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+    --primary: #7B68EE;
+    --secondary: #FFD700;
+    --light: #1E1E2E;
+    --dark: #F0F0F0;
+    --text-color: #FFFFFF;
+    --bg-color: #121212;
+    --bg-light: #1E1E2E;
+    --card-bg: #2D2D3A;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --heading-color: #FFFFFF;
+    --nav-text: #FFFFFF;
+    --footer-text: #FFFFFF;
+}
+
+/* Apply dark mode text colors */
+[data-theme="dark"] .text-dark,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link,
+[data-theme="dark"] .experience-item,
+[data-theme="dark"] .project-item-vertical {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: #1a1a2e !important;
+}
+
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link {
+    color: var(--nav-text);
+}
+
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link.active {
+    color: var(--secondary);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-floating label {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .form-floating>.form-control:focus~label,
+[data-theme="dark"] .form-floating>.form-control:not(:placeholder-shown)~label {
+    color: var(--primary);
+}
+
+[data-theme="dark"] .progress {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .experience-item:hover,
+[data-theme="dark"] .project-item-vertical:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .navbar-toggler {
+    background-color: var(--bg-light);
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+/* Theme switch button */
+.theme-switch {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+    transform: scale(1.1);
+}
+
+.theme-switch i {
+    font-size: 20px;
+}
+
+/* Apply theme styles to elements */
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+.bg-white,
+.navbar.bg-white {
+    background-color: var(--bg-color) !important;
+}
+
+.text-dark {
+    color: var(--text-color) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-color);
+}
+
+.experience-item,
+.project-item-vertical {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color);
+}
+
+hr.w-100 {
+    border-color: var(--border-color);
+}
+
+.form-control {
+    background-color: var(--bg-light);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.form-control:focus {
+    background-color: var(--bg-light);
+    color: var(--text-color);
+}
+
+.form-floating label {
+    color: var(--text-color);
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+.my-6 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.py-6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+
+/*** Navbar ***/
+.navbar.fixed-top {
+    display: none;
+    transition: .5s;
+}
+
+.navbar .navbar-nav .nav-link {
+    padding: 20px 15px;
+    color: var(--dark);
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 1399.98px) {
+    .display-3 {
+        font-size: 3.5rem;
+    }
+
+    .container-xxl {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .display-3 {
+        font-size: 3rem;
+    }
+
+    #home .typed-text-output {
+        font-size: 1.75rem;
+    }
+
+    .typed-cursor {
+        font-size: 25px;
+    }
+
+    #about .years .display-1 {
+        font-size: 8rem;
+        line-height: 7rem;
+    }
+
+    #about .years h5 {
+        letter-spacing: 15px;
+        margin-right: -15px;
+    }
+
+    .theme-switch {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .display-5 {
+        font-size: 2rem;
+    }
+
+    #home .typed-text-output {
+        font-size: 1.5rem;
+    }
+
+    .typed-cursor {
+        font-size: 22px;
+    }
+
+    /* Improved navbar behavior */
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-collapse {
+        background: var(--bg-color);
+    }
+
+    .navbar-nav {
+        padding: 10px 0;
+    }
+
+    /* Adjust padding for sections */
+    .my-6 {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .py-6 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    /* Hackathon items padding adjustment */
+    .experience-item {
+        padding: 20px !important;
+    }
+
+    /* Footer button spacing */
+    .btn-lg.btn-square {
+        margin: 0 10px;
+    }
+
+    /* Email overflow handling */
+    .visible-email-link {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .display-3 {
+        font-size: 2.2rem;
+    }
+
+    .display-5 {
+        font-size: 1.8rem;
+    }
+
+    #home .typed-text-output {
+        font-size: 1.3rem;
+    }
+
+    .typed-cursor {
+        font-size: 18px;
+    }
+
+    /* About section mobile optimization */
+    #about .d-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #about .years {
+        margin-bottom: 20px;
+    }
+
+    /* Skills and experience tabs */
+    .nav-pills .nav-link {
+        font-size: 0.9rem !important;
+        padding: 10px 5px !important;
+    }
+
+    /* Contact section */
+    .container-xxl#contact h3.fw-bold {
+        font-size: 1.4rem;
+    }
+
+    /* Footer adjustments */
+    .container-fluid.bg-dark {
+        padding: 30px 0;
+    }
+
+    .btn-lg.btn-square {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .display-3 {
+        font-size: 2rem;
+    }
+
+    .display-5 {
+        font-size: 1.5rem;
+    }
+
+    #home .typed-text-output {
+        font-size: 1.1rem;
+    }
+
+    .typed-cursor {
+        font-size: 16px;
+    }
+
+    /* Project layout for very small screens */
+    .project-item-vertical {
+        padding: 15px !important;
+    }
+
+    .project-item-vertical h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Header section */
+    #home {
+        padding-top: 70px !important;
+        /* Ensure content doesn't hide under navbar */
+    }
+
+    /* Contact form mobile adjustments */
+    .form-floating {
+        margin-bottom: 10px;
+    }
+
+    /* Social media icon size adjustments */
+    .btn-square {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .btn-lg.btn-square {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+        margin: 0 8px;
+    }
+}
+
+/* Fix flexbox issues on Safari */
+@supports (-webkit-touch-callout: none) {
+    .d-flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .align-items-center {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .justify-content-center {
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+}
+
+/* Fix overflow issues */
+.container,
+.container-fluid {
+    overflow-x: hidden;
+}
+
+/* Fix for dark mode elements in mobile */
+[data-theme="dark"] .navbar-collapse {
+    background-color: var(--bg-color);
+}
+
+/* Professional Profile Image Styling */
+.profile-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    max-width: 80%;
+    margin-left: auto;
+    margin-top: 20px;
+    background: transparent;
+    padding: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-container img {
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+    object-fit: cover;
+    width: 100%;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
+}
+
+.profile-container:hover {
+    box-shadow: 0 15px 30px rgba(98, 68, 197, 0.15);
+    transform: translateY(-3px);
+}
+
+.profile-container:hover img {
+    transform: scale(1.015);
+}
+
+[data-theme="dark"] .profile-container img {
+    filter: brightness(1.05) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 991.98px) {
+    .profile-container {
+        max-width: 70%;
+        margin: 0 auto;
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .profile-container {
+        margin-top: 2.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .profile-container {
+        max-width: 90%;
+        margin-top: 2rem;
+    }
+}

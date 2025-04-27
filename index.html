@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rajarshi Bhowmick| Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#6244C5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Rajarshi Bhowmik - Web Developer Portfolio">
+
+    <!-- Favicon -->
+    <link href="img/favicon-16x16.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Theme Switch Button -->
+    <button class="theme-switch" id="theme-switch" title="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn"
+        data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+                <a href="#skill" class="nav-item nav-link">Experience</a>
+                <a href="#project" class="nav-item nav-link">Projects</a>
+                <a href="#contact" class="nav-item nav-link">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-light my-6 mt-0" id="home">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 py-6 pb-0 pt-lg-0">
+                    <h3 class="text-primary mb-3">I'm</h3>
+                    <h1 class="display-3 mb-3">Rajarshi Bhowmik</h1>
+                    <h2 class="typed-text-output d-inline"></h2>
+                    <div class="typed-text d-none">Web Designer, Web Developer, Front End Developer, UI/UX Designer,
+                    </div>
+                    <div class="d-flex align-items-center pt-5">
+                        <a href="img/resume.pdf" class="btn btn-primary py-3 px-4 me-5">Download CV</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-end">
+                    <div class="profile-container">
+                        <img class="img-fluid" src="img/profileop.jpg" alt="Rajarshi Bhowmik - Web Developer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Video Modal Start -->
+    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
+                            allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video Modal End -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-6" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-5">
+                        <div class="years flex-shrink-0 text-center me-4">
+                            <h1 class="display-1 mb-0">2+</h1>
+                            <h5 class="mb-0">Years</h5>
+                        </div>
+                        <h3 class="lh-base mb-0">of working experience as a web designer & developer</h3>
+                    </div>
+                    <p class="mb-4">I'm a full-stack web developer and AI enthusiast, currently studying AI and Machine
+                        Learning at JIS College of Engineering. With experience in frontend development, JavaScript, and
+                        backend technologies, I've contributed to several projects.
+
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" src="img/skills.png" alt="">
+                        </div>
+                    </div>
+                    <br>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- Expertise Start -->
+        <div class="container-xxl py-6 pb-5" id="skill">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="display-5 mb-5">Skills & Experience</h1>
+                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam
+                            rebum
+                            amet diam ipsum clita dolor duo clita sit.</p>
+                        <h3 class="mb-4">My Skills</h3>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">HTML</h6>
+                                        <h6 class="font-weight-bold">95%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">CSS</h6>
+                                        <h6 class="font-weight-bold">85%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">PHP</h6>
+                                        <h6 class="font-weight-bold">90%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">Javascript</h6>
+                                        <h6 class="font-weight-bold">90%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">Python</h6>
+                                        <h6 class="font-weight-bold">85%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="85"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">Bootstrap</h6>
+                                        <h6 class="font-weight-bold">90%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                            <li class="nav-item w-50">
+                                <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill"
+                                    href="#tab-1">Experience</button>
+                            </li>
+                            <li class="nav-item w-50">
+                                <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill"
+                                    href="#tab-2">Education</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane fade show p-0 active">
+                                <div class="row gy-5 gx-4">
+                                    <div class="col-sm-6">
+                                        <h5>UI Designer</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">2023-</p>
+                                        <h6 class="mb-0">Team Byte Gurus</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5>FrontEnd Developer</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">2023 - 2023</p>
+                                        <h6 class="mb-0">Team CodeArc</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane fade show p-0">
+                                <div class="row gy-5 gx-4">
+                                    <div class="col-sm-6">
+                                        <h5>Saint Anthonys's School</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">2008 - 2023</p>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5>JIS College of Engineering</h5>
+                                        <hr class="text-primary my-2">
+                                        <p class="text-primary mb-1">2023 - </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Expertise End -->
+
+        <!-- Hackathon Experiences Start -->
+        <div class="container-fluid bg-light my-5 py-6" id="hackathon">
+            <div class="container">
+                <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-12">
+                        <h1 class="display-5 mb-0">Hackathon Experiences</h1>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5 mb-4">
+                            <h4 class="mb-2">1. Smart India Hackathon 2024 - Internal Hackathon</h4>
+                            <h5 class="text-primary mb-2">Team Byte Gurus</h5>
+                            <p class="text-muted mb-3">August 2024, JIS College of Engineering</p>
+                            <p>Developed a Smart Classroom Management System website using Laravel, focusing on
+                                efficient classroom operations, user management, and real-time data handling. Ensured
+                                clean architecture, secure authentication, and responsive design. Nominated, but
+                                could'nt made it to the finals.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5 mb-4">
+                            <h4 class="mb-2">2. ICDMAI Hackathon 2024</h4>
+                            <h5 class="text-primary mb-2">Team codeARC</h5>
+                            <p class="text-muted mb-3">January 2025, Adamas University</p>
+                            <p>Developed a real-time Attrition Prevention Dashboard using HTML, CSS, and JavaScript.
+                                Focused on visualizing employee data to identify potential attrition risks, enabling
+                                proactive decision-making through interactive charts, responsive design, and real-time
+                                updates.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5 mb-4">
+                            <h4 class="mb-2">3. Diversion 2K25</h4>
+                            <h5 class="text-primary mb-2">Team ByteGurus</h5>
+                            <p class="text-muted mb-3">February 2025, Institute of Engineering and Management</p>
+                            <p>Designed and developed an AI Powered Financial advisory platform designed to help users
+                                make informed decisions regarding property investments, high-value purchases, and
+                                overall financial planning.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5 mb-4">
+                            <h4 class="mb-2">4. InnovoCon 2025</h4>
+                            <h5 class="text-primary mb-2">Organizer</h5>
+                            <p class="text-muted mb-3">February 2025, JIS College of Engineering</p>
+                            <p>I played a key role in organizing InnovoCon 2025, overseeing end-to-end planning and
+                                execution to ensure the event's overall success. My responsibilities included
+                                coordinating with teams, managing logistics, and ensuring smooth delivery of all
+                                sessions and activities.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5 mb-4">
+                            <h4 class="mb-2">5. Binary KGEC 2025</h4>
+                            <h5 class="text-primary mb-2">Team Xcelerate</h5>
+                            <p class="text-muted mb-3">March 2025, Kalyani Government Engineering College</p>
+                            <p>Developed a Smart Interview Management System website using PHP, aimed at streamlining
+                                interview scheduling, candidate tracking, and evaluation processes. Implemented secure
+                                authentication, user role management, and an intuitive interface for enhanced usability.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="experience-item bg-white rounded p-4 p-lg-5">
+                            <h4 class="mb-2">6. Hack4Bengal 4.0 - Virtual Hack</h4>
+                            <h5 class="text-primary mb-2">Team Pookies</h5>
+                            <p class="text-muted mb-3">April 2025, Virtual Hackathon</p>
+                            <p>We developed Fakebuster AI during Hack4Bengal 4.0 Virtual Hackathon, an innovative
+                                solution designed to detect and combat misinformation and fake content using advanced
+                                artificial intelligence techniques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hackathon Experiences End -->
+
+
+        <!-- Projects Start -->
+        <div class="container-xxl py-6 pt-5" id="project">
+            <div class="container">
+                <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-6">
+                        <h1 class="display-5 mb-0">My Projects</h1>
+                    </div>
+                </div>
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="project-item-vertical bg-white rounded p-4 p-lg-5 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 mb-4 mb-lg-0">
+                                <div class="video-container rounded overflow-hidden">
+                                    <video class="project-video w-100" controls>
+                                        <source src="videos/Welcome to FakeBuster - Brave 2025-04-26 23-51-42.mp4"
+                                            type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h4 class="mb-3">Fakebuster AI</h4>
+                                <p>FakeBuster is a deepfake detection tool. It uses advanced AI algorithms to analyze
+                                    and identify manipulated media content. It can spot manipulated videos, images, and
+                                    audio, even when the fakes are subtle. FakeBuster is mainly used in video
+                                    conferencing and online media to expose synthetic or tampered content.</p>
+                                <div class="mt-4">
+                                    <a href="https://somyadipghosh.is-a.dev/fakebuster/home.html"
+                                        class="btn btn-primary">Visit Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item-vertical bg-white rounded p-4 p-lg-5 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 mb-4 mb-lg-0">
+                                <div class="video-container rounded overflow-hidden">
+                                    <video class="project-video w-100" controls>
+                                        <source
+                                            src="videos/HireHub - Find Your Dream Job or Hire Top Talent - Brave 2025-04-27 00-09-06.mp4"
+                                            type="video/mp4">
+
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h4 class="mb-3">HireHub</h4>
+                                <p>HireHub is an AI-powered recruitment platform designed to streamline the hiring
+                                    process. It helps companies find, evaluate, and connect with top candidates faster
+                                    by using automation and machine learning. The platform typically includes features
+                                    like resume screening, candidate matching, and interview scheduling to make hiring
+                                    more efficient.</p>
+                                <div class="mt-4">
+                                    <a href="https://somyadipghosh.is-a.dev/hirehub/" class="btn btn-primary">Visit
+                                        Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item-vertical bg-white rounded p-4 p-lg-5 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 mb-4 mb-lg-0">
+                                <div class="video-container rounded overflow-hidden">
+                                    <video class="project-video w-100" controls>
+                                        <source
+                                            src="videos/Netflix India – Watch TV Shows Online, Watch Movies Online - Personal - Microsoft​ Edge 2025-04-27 00-19-50 - Copy.mp4"
+                                            type="video/mp4">
+
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h4 class="mb-3">Netflix Clone</h4>
+                                <p>I have designed a Netflix clone which looks exactly like Netflix. This is my first
+                                    Project hope you like it. I have used HTML, CSS to design the website.</p>
+                                <div class="mt-4">
+                                    <a href="https://netflixclone-nine-mu.vercel.app/" class="btn btn-primary">Visit
+                                        Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Projects End -->
+
+
+        <!-- Contact Start -->
+        <div class="container-xxl pb-5" id="contact">
+            <div class="container py-5">
+                <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-6">
+                        <h1 class="display-5 mb-0">Let's Work Together</h1>
+                    </div>
+                    <div class="col-lg-6 text-lg-end">
+                        <a class="btn btn-primary py-3 px-5" href="">Say Hello</a>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <p class="mb-2">My location</p>
+                        <h3 class="fw-bold"> West Bengal, India</h3>
+                        <hr class="w-100">
+                        <p class="mb-2">Call me:</p>
+                        <h3 class="fw-bold">+91 8637553008</h3>
+                        <hr class="w-100">
+                        <p class="mb-2">Mail me:</p>
+                        <h3 class="fw-bold">
+                            <a href="mailto:bhowmickrajarshi38@gmail.com" class="email-link visible-email-link">
+                                bhowmickrajarshi38@gmail.com <i class="fas fa-envelope-open-text ml-2"></i>
+                            </a>
+                        </h3>
+                        <hr class="w-100">
+                        <p class="mb-2">Follow me:</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-square btn-primary me-2" href="https://x.com/Rajo_7811"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary me-2" href="https://github.com/Rajarshi8"><i
+                                    class="fab fa-github"></i></a>
+                            <a class="btn btn-square btn-primary me-2"
+                                href="https://www.linkedin.com/in/rajarshi-bhowmik-4419212b8/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <h2>Contact Me</h2>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message"
+                                        style="height: 100px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white py-5">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h3 class="text-primary mb-4">Connect With Me</h3>
+                    <div class="d-flex justify-content-center w-100">
+                        <a class="btn btn-lg btn-square btn-primary mx-3"
+                            href="https://www.linkedin.com/in/rajarshi-bhowmik-4419212b8/" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="btn btn-lg btn-square btn-primary mx-3" href="https://github.com/Rajarshi8"
+                            title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a class="btn btn-lg btn-square btn-primary mx-3" href="https://x.com/Rajo_7811"
+                            title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-4">
+                    <p class="m-0">&copy; 2025 Rajarshi Bhowmik. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+    </div>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
