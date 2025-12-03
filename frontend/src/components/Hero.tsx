@@ -71,7 +71,7 @@ export function Hero() {
               <FileText className="w-5 h-5" />
               Resume
             </motion.a>
-            
+
             <motion.button
               onClick={scrollToProjects}
               className="inline-flex items-center gap-2 px-6 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark font-medium rounded-xl hover:border-primary transition-all"

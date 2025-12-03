@@ -68,7 +68,7 @@ const startServer = async () => {
       logger.warn('MongoDB not available - running with fallback data');
       logger.warn('Set MONGODB_URI in .env to enable database features');
     }
-    
+
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
     });
