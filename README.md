@@ -1,137 +1,210 @@
-# Rajarshi Bhowmik - Portfolio Website
+# Rajarshi Bhowmik - Portfolio
 
-A modern, responsive full-stack portfolio website built with React + Node.js/Express.
+Personal portfolio website showcasing projects, skills, and professional experience.
 
-![Portfolio Preview](personal-portfolio-html-template.jpg)
+**Live Site:** [rajarshibhowmik.me](https://rajarshibhowmik.me)
 
-## 🚀 Features
+---
 
-- **Modern React Frontend** - Vite, TypeScript, Tailwind CSS, Framer Motion
-- **Express.js Backend** - REST API, MongoDB, TypeScript
-- **Dark/Light Theme** - Persistent theme toggle with system preference detection
-- **Responsive Design** - Mobile-first, works on all devices
-- **Contact Form** - Working email notifications via Nodemailer
-- **Admin API** - Secure endpoints for content management
-- **SEO Optimized** - Meta tags, Open Graph, semantic HTML
-- **Accessible** - WCAG compliant, keyboard navigable
+## Overview
 
-## 📁 Project Structure
+This is a full-stack portfolio application with a React frontend and Node.js/Express backend. The architecture separates concerns between presentation and data management, allowing for dynamic content updates without redeploying the frontend.
+
+The frontend is a single-page application that fetches all content from the backend API. The backend includes a fallback data system, meaning it works without a database by serving static JSON data when MongoDB is unavailable.
+
+---
+
+## Architecture
+
+### Frontend (React SPA)
+
+Built with modern React tooling for optimal developer experience and performance:
+
+- **React 18** with functional components and hooks
+- **TypeScript** for type safety and better IDE support
+- **Vite** as the build tool (faster than Create React App)
+- **Tailwind CSS** for utility-first styling
+- **Framer Motion** for smooth animations
+- **React Router** for client-side navigation
+
+The frontend consumes the backend API and renders six main sections:
+1. Hero - Introduction with typed text animation
+2. Projects - Featured work with live demos and source links
+3. Experience - Work history, education, achievements, hackathons
+4. Skills - Technical competencies grouped by category
+5. Contact - Form submission with validation
+6. Footer - Social links and navigation
+
+### Backend (Express API)
+
+RESTful API designed for simplicity and reliability:
+
+- **Express.js** with TypeScript
+- **MongoDB/Mongoose** for data persistence (optional)
+- **Fallback Data System** - Serves static data when database unavailable
+- **Rate Limiting** on contact form to prevent spam
+- **CORS** configured for frontend origin
+
+The backend exposes these endpoints:
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /api/site` | Site metadata, hero content, social links |
+| `GET /api/projects` | All projects with descriptions and links |
+| `GET /api/experience` | Work, education, achievements, hackathons |
+| `POST /api/contact` | Contact form submission |
+| `GET /health` | Server health check |
+
+---
+
+## Project Structure
 
 ```
-├── frontend/          # React SPA (Vite + TypeScript)
+portfolio/
+├── frontend/                 # React application
 │   ├── src/
-│   │   ├── components/  # UI components
-│   │   ├── hooks/       # Custom React hooks
-│   │   ├── pages/       # Route pages
-│   │   ├── lib/         # Animation configs
-│   │   └── utils/       # API client
-│   └── package.json
-├── backend/           # Express API (TypeScript)
+│   │   ├── components/       # UI components (Header, Hero, Projects, etc.)
+│   │   ├── hooks/            # Custom hooks (useTheme, useFetch)
+│   │   ├── lib/              # Animation configurations
+│   │   ├── pages/            # Route components
+│   │   ├── types/            # TypeScript interfaces
+│   │   └── utils/            # API client
+│   ├── public/               # Static assets (resume, favicon)
+│   └── dist/                 # Production build output
+│
+├── backend/                  # Express API
 │   ├── src/
-│   │   ├── models/      # Mongoose schemas
-│   │   ├── routes/      # API endpoints
-│   │   ├── middleware/  # Auth, validation
-│   │   └── services/    # Email, etc.
-│   └── package.json
-├── docker-compose.yml # Production Docker setup
-└── index.html         # Legacy static site
+│   │   ├── data/             # Fallback static data
+│   │   ├── models/           # Mongoose schemas
+│   │   ├── routes/           # API route handlers
+│   │   ├── middleware/       # Auth, validation, error handling
+│   │   └── services/         # Email service
+│   └── dist/                 # Compiled JavaScript
+│
+├── index.html                # Legacy static site (Bootstrap)
+├── css/                      # Legacy styles
+├── js/                       # Legacy scripts
+└── docker-compose.yml        # Container orchestration
 ```
 
-## 🛠️ Quick Start
+---
+
+## Local Development
 
 ### Prerequisites
-- Node.js 18+
-- MongoDB (local or Atlas)
-- npm or pnpm
 
-### Backend Setup
+- Node.js 18 or higher
+- npm or pnpm
+- MongoDB (optional - backend works without it)
+
+### Running the Backend
+
 ```bash
 cd backend
 npm install
 cp .env.example .env
-# Edit .env with your MongoDB URI and SMTP settings
-npm run seed   # Populate database
-npm run dev    # Start at http://localhost:5000
+npm run dev
 ```
 
-### Frontend Setup
+The API starts at `http://localhost:5001`. Without MongoDB configured, it automatically serves fallback data.
+
+### Running the Frontend
+
 ```bash
 cd frontend
 npm install
 cp .env.example .env
-npm run dev    # Start at http://localhost:5173
+npm run dev
 ```
 
-### Docker (Full Stack)
-```bash
-# Development with hot reload
-docker-compose -f docker-compose.dev.yml up
+The app starts at `http://localhost:5173` and proxies API requests to the backend.
 
-# Production build
-docker-compose up --build
-```
+### Environment Variables
 
-## 🔌 API Endpoints
+**Backend** (`.env`):
+- `PORT` - Server port (default: 5001)
+- `MONGODB_URI` - Database connection string (optional)
+- `CORS_ORIGIN` - Allowed frontend origin
+- `SMTP_*` - Email configuration for contact form
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/site` | Site settings |
-| GET | `/api/projects` | List projects |
-| GET | `/api/projects/:slug` | Project details |
-| GET | `/api/experience` | Experience timeline |
-| POST | `/api/contact` | Submit contact form |
-| GET | `/health` | Health check |
+**Frontend** (`.env`):
+- `VITE_API_URL` - Backend API URL
 
-Admin endpoints require Basic Auth (see `.env`).
+---
 
-## 🎨 Customization
+## Deployment
 
-### Theme Colors
-Edit `frontend/tailwind.config.js`:
+### Frontend (Vercel)
+
+The frontend is deployed to Vercel as a static site:
+
+1. Build produces static files in `frontend/dist/`
+2. Vercel serves these with proper SPA routing
+3. Custom domain configured via Vercel dashboard
+
+Build command: `npm run build`
+Output directory: `dist`
+
+### Backend Options
+
+The backend can be deployed to any Node.js hosting:
+
+- **Render** - Free tier available, auto-deploys from GitHub
+- **Railway** - Simple deployment with database add-ons
+- **Fly.io** - Global edge deployment
+
+For a purely static deployment, the frontend can be built with embedded data, eliminating the need for a running backend.
+
+---
+
+## Customization
+
+### Modifying Content
+
+All portfolio content is defined in `backend/src/data/fallback.ts`:
+
+- **Site Info** - Name, title, bio, social links
+- **Projects** - Title, description, tech stack, links
+- **Experience** - Work history, education, achievements, hackathons
+- **Skills** - Technical skills list
+
+Update this file and rebuild to change content.
+
+### Styling
+
+Theme colors are configured in `frontend/tailwind.config.js`:
+
 ```javascript
 colors: {
-  primary: {
-    DEFAULT: '#6244C5',  // Change this
-  }
+  primary: '#6244C5',    // Purple accent
+  secondary: '#FFC448',  // Gold accent
 }
 ```
 
-### Content
-1. Edit seed data in `backend/src/scripts/seed.ts`
-2. Run `npm run seed` to update database
-3. Or use admin API endpoints
+The site supports dark/light mode with system preference detection.
 
-## 📦 Deployment
+---
 
-### Frontend (Vercel)
-```bash
-cd frontend
-npm run build
-# Deploy dist/ to Vercel
-```
+## Tech Stack Summary
 
-### Backend (Render/Railway)
-1. Connect your repo
-2. Set environment variables
-3. Build command: `npm run build`
-4. Start command: `npm start`
+| Layer | Technology |
+|-------|------------|
+| Frontend Framework | React 18 |
+| Build Tool | Vite 5 |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| Language | TypeScript |
+| Backend | Express.js |
+| Database | MongoDB (optional) |
+| Deployment | Vercel |
 
-## 🧪 Testing
-```bash
-# Backend tests
-cd backend && npm test
+---
 
-# Frontend tests
-cd frontend && npm test
-```
+## License
 
-## 📄 License
+MIT License - Feel free to use this as a template for your own portfolio.
 
-MIT License - see [LICENSE.txt](LICENSE.txt)
+---
 
-## 👤 Author
-
-**Rajarshi Bhowmik**
-- GitHub: [@Rajarshi8](https://github.com/Rajarshi8)
-- LinkedIn: [rajarshi-bhowmik](https://linkedin.com/in/rajarshi-bhowmik-4419212b8)
-- Twitter: [@Rajo_7811](https://x.com/Rajo_7811)
+**Author:** Rajarshi Bhowmik  
+**Contact:** [rajarshibhowmik.me](https://rajarshibhowmik.me)
