@@ -47,59 +47,54 @@ function ExperienceItem({ experience, index }: ExperienceItemProps) {
     return (
         <motion.div
             variants={fadeInUp}
-            className="relative pl-8 pb-8 last:pb-0"
+            className="bg-card-light dark:bg-card-dark rounded-xl p-5 border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors h-full"
         >
-            {/* Timeline line */}
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-border-light dark:bg-border-dark" />
-
-            {/* Timeline dot */}
-            <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 flex items-center justify-center rounded-full bg-primary text-white">
+            {/* Icon */}
+            <div className="w-10 h-10 mb-4 flex items-center justify-center rounded-full bg-primary text-white">
                 {getIcon()}
             </div>
 
             {/* Content */}
-            <div className="bg-card-light dark:bg-card-dark rounded-xl p-5 border border-border-light dark:border-border-dark hover:border-primary/50 transition-colors">
-                <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                    <h4 className="text-lg font-bold">{experience.role}</h4>
-                    <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary font-medium">
-                        {getLabel()}
-                    </span>
-                </div>
+            <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                <h4 className="text-lg font-bold">{experience.role}</h4>
+                <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary font-medium">
+                    {getLabel()}
+                </span>
+            </div>
 
-                <p className="text-primary font-medium mb-2">
-                    {experience.type === 'work' ? 'at ' : experience.type === 'hackathon' ? '' : ''}{experience.company}
-                </p>
+            <p className="text-primary font-medium mb-2">
+                {experience.type === 'work' ? 'at ' : experience.type === 'hackathon' ? '' : ''}{experience.company}
+            </p>
 
-                <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark mb-3">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark mb-3">
+                <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {formatDate(experience.startDate)}
+                    {' - '}
+                    {experience.current ? 'Present' : experience.endDate ? formatDate(experience.endDate) : ''}
+                </span>
+                {experience.location && (
                     <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {formatDate(experience.startDate)}
-                        {' - '}
-                        {experience.current ? 'Present' : experience.endDate ? formatDate(experience.endDate) : ''}
+                        <MapPin className="w-4 h-4" />
+                        {experience.location}
                     </span>
-                    {experience.location && (
-                        <span className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            {experience.location}
-                        </span>
-                    )}
-                </div>
-
-                <p className="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
-                    {experience.description}
-                </p>
-
-                {/* Tech Stack */}
-                {experience.tech && experience.tech.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                        {experience.tech.map((tech) => (
-                            <span key={tech} className="tech-badge">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
                 )}
             </div>
+
+            <p className="text-sm text-text-muted-light dark:text-text-muted-dark leading-relaxed">
+                {experience.description}
+            </p>
+
+            {/* Tech Stack */}
+            {experience.tech && experience.tech.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                    {experience.tech.map((tech) => (
+                        <span key={tech} className="tech-badge">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+            )}
         </motion.div>
     );
 }
@@ -127,7 +122,7 @@ export function Experience({ work, education, achievements, hackathons }: Experi
                         <motion.h2 variants={fadeInUp} className="section-title">
                             Experience
                         </motion.h2>
-                        <div className="max-w-3xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {work.map((exp, index) => (
                                 <ExperienceItem key={exp._id} experience={exp} index={index} />
                             ))}
@@ -147,7 +142,7 @@ export function Experience({ work, education, achievements, hackathons }: Experi
                         <motion.h2 variants={fadeInUp} className="section-title">
                             Education
                         </motion.h2>
-                        <div className="max-w-3xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {education.map((exp, index) => (
                                 <ExperienceItem key={exp._id} experience={exp} index={index} />
                             ))}
@@ -167,7 +162,7 @@ export function Experience({ work, education, achievements, hackathons }: Experi
                         <motion.h2 variants={fadeInUp} className="section-title">
                             Volunteering & Leadership
                         </motion.h2>
-                        <div className="max-w-3xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {achievements.map((exp, index) => (
                                 <ExperienceItem key={exp._id} experience={exp} index={index} />
                             ))}
@@ -186,7 +181,7 @@ export function Experience({ work, education, achievements, hackathons }: Experi
                         <motion.h2 variants={fadeInUp} className="section-title">
                             Hackathon Experiences
                         </motion.h2>
-                        <div className="max-w-3xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {hackathons.map((exp, index) => (
                                 <ExperienceItem key={exp._id} experience={exp} index={index} />
                             ))}
