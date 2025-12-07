@@ -108,7 +108,7 @@ interface ExperienceProps {
 
 export function Experience({ work, education, achievements, hackathons }: ExperienceProps) {
     return (
-        <section id="experience" className="section bg-surface-light dark:bg-surface-dark">
+        <section id="experience" className="section bg-background-light dark:bg-background-dark">
             <div className="container mx-auto px-4 md:px-6">
                 {/* Work Experience */}
                 {work.length > 0 && (

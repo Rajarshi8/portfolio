@@ -47,7 +47,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="section bg-surface-light dark:bg-surface-dark">
+    <section id="contact" className="section bg-background-light dark:bg-background-dark">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={staggerContainer}
