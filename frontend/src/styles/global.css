@@ -32,22 +32,25 @@
   .bg-background-light {
     background-color: #FFFFFF;
   }
+
   .dark .bg-background-light,
   .dark .dark\:bg-background-dark {
     background-color: #0a0a0a !important;
   }
-  
+
   .bg-surface-light {
     background-color: #F5F5F5;
   }
+
   .dark .bg-surface-light,
   .dark .dark\:bg-surface-dark {
     background-color: #171717 !important;
   }
-  
+
   .bg-card-light {
     background-color: #FFFFFF;
   }
+
   .dark .bg-card-light,
   .dark .dark\:bg-card-dark {
     background-color: #1a1a1a !important;
@@ -245,8 +248,16 @@ button {
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Smooth image loading */
@@ -270,8 +281,22 @@ img[data-loading="true"] {
 }
 
 /* Animation delays for staggered effects */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}

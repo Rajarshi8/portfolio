@@ -23,7 +23,7 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     // Honeypot check
     if (formData.website) {
       return;
