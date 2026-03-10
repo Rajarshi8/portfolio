@@ -61,12 +61,12 @@
 /* Force background colors based on theme */
 @layer base {
   .bg-background-light {
-    background-color: #FFFFFF;
+    background-color: transparent;
   }
 
   .dark .bg-background-light,
   .dark .dark\:bg-background-dark {
-    background-color: #0a0a0a !important;
+    background-color: transparent !important;
   }
 
   .bg-surface-light {
@@ -96,8 +96,14 @@
 }
 
 html {
+  background-color: #FFFFFF;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+}
+
+html.dark {
+  background-color: #0a0a0a;
+}
 }
 
 body {
