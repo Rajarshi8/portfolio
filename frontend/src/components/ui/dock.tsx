@@ -28,7 +28,7 @@ export default function Dock({ items, className }: DockProps) {
         animate={{ y: [0, -2, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className={cn(
-          "flex items-end gap-4 px-4 py-3 rounded-3xl",
+          "flex items-end gap-2 px-3 py-1.5 rounded-2xl",
           "border bg-background/70 backdrop-blur-2xl shadow-lg"
         )}
         style={{
@@ -57,7 +57,7 @@ export default function Dock({ items, className }: DockProps) {
                       variant="ghost"
                       size="icon"
                       className={cn(
-                        "rounded-2xl relative",
+                        "h-8 w-8 rounded-xl relative",
                         "transition-colors",
                         isHovered && "shadow-lg shadow-primary/20"
                       )}
@@ -68,7 +68,7 @@ export default function Dock({ items, className }: DockProps) {
                     >
                       <item.icon
                         className={cn(
-                          "h-6 w-6 transition-colors",
+                          "h-4 w-4 transition-colors",
                           isActive ? "text-primary" : "text-foreground"
                         )}
                       />
