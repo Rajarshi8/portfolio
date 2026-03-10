@@ -12,24 +12,48 @@ export default {
           DEFAULT: '#6244C5',
           light: '#7B68EE',
           dark: '#4B2D9E',
+          foreground: 'var(--primary-foreground)',
         },
         secondary: {
           DEFAULT: '#FFC448',
           light: '#FFD700',
           dark: '#E5A500',
+          foreground: 'var(--secondary-foreground)',
         },
         background: {
+          DEFAULT: 'var(--background)',
           light: '#FFFFFF',
           dark: '#0a0a0a',
         },
+        foreground: 'var(--foreground)',
         surface: {
           light: '#F5F5F5',
           dark: '#171717',
         },
         card: {
+          DEFAULT: 'var(--card)',
           light: '#FFFFFF',
           dark: '#1a1a1a',
+          foreground: 'var(--foreground)',
         },
+        popover: {
+          DEFAULT: 'var(--popover)',
+          foreground: 'var(--popover-foreground)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+        },
+        input: 'var(--input)',
+        ring: 'var(--ring)',
         text: {
           light: '#12141D',
           dark: '#EDEDED',
@@ -39,9 +63,15 @@ export default {
           },
         },
         border: {
+          DEFAULT: 'var(--border)',
           light: 'rgba(0, 0, 0, 0.1)',
           dark: 'rgba(255, 255, 255, 0.1)',
         },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
