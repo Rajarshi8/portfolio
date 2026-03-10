@@ -3,6 +3,7 @@ import { Home, FolderOpen, Briefcase, Cpu, Mail } from 'lucide-react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import Dock from './ui/dock';
+import { GridBackground } from './ui/grid-background';
 
 interface LayoutProps {
   children: ReactNode;
@@ -24,6 +25,7 @@ const dockItems = [
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background-light dark:bg-background-dark transition-colors duration-300">
+      <GridBackground />
       <Header />
       <main className="flex-1">
         {children}
