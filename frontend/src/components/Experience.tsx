@@ -3,6 +3,7 @@ import { Briefcase, GraduationCap, Trophy, Calendar, MapPin, Code2 } from 'lucid
 import { fadeInUp, staggerContainer, viewportOnce } from '../lib/animations';
 import type { Experience as ExperienceType } from '../types';
 
+
 interface ExperienceItemProps {
     experience: ExperienceType;
     index: number;

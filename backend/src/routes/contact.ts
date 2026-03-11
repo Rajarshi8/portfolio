@@ -9,10 +9,10 @@ import { logger } from '../utils/logger.js';
 
 const router = Router();
 
-// Strict rate limit for contact form
+// Strict rate limit for contact form (disabled in development)
 const contactRateLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour
-    max: parseInt(process.env.CONTACT_RATE_LIMIT_MAX || '5'),
+    max: process.env.NODE_ENV === 'development' ? 1000 : parseInt(process.env.CONTACT_RATE_LIMIT_MAX || '5'),
     message: { success: false, error: 'Too many contact requests, please try again later.' },
     keyGenerator: (req) => req.ip || 'unknown',
 });
@@ -61,35 +61,38 @@ router.post(
     asyncHandler(async (req: Request, res: Response) => {
         const { name, email, subject, message } = req.body;
 
-        // Create contact record
-        const contact = await Contact.create({
-            name,
-            email,
-            subject,
-            message,
-            ipAddress: req.ip,
-            userAgent: req.get('User-Agent'),
-        });
+        // Try to save contact record (may fail if MongoDB is unavailable)
+        let savedContactId: string | undefined;
+        try {
+            const contact = await Contact.create({
+                name,
+                email,
+                subject,
+                message,
+                ipAddress: req.ip,
+                userAgent: req.get('User-Agent'),
+            });
+            savedContactId = contact._id.toString();
+        } catch (dbError) {
+            logger.warn('Could not save contact to DB (MongoDB unavailable):', (dbError as Error).message);
+        }
 
-        // Try to send email
+        // Try to send email notification
         let emailSent = false;
         try {
             await sendContactEmail({ name, email, subject, message });
             emailSent = true;
-            contact.emailSent = true;
-            await contact.save();
         } catch (error) {
             logger.error('Failed to send contact email:', error);
-            // Don't fail the request if email fails - message is saved
         }
+
+        logger.info(`Contact form submission from ${name} <${email}> — DB saved: ${!!savedContactId}, email sent: ${emailSent}`);
 
         res.status(201).json({
             success: true,
             data: {
-                message: emailSent
-                    ? 'Thank you for your message! I will get back to you soon.'
-                    : 'Your message has been received. I will get back to you soon.',
-                id: contact._id,
+                message: 'Thank you for your message! I will get back to you soon.',
+                ...(savedContactId && { id: savedContactId }),
             },
         });
     })

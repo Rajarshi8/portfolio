@@ -1,218 +1,137 @@
-import { useState, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Check, AlertCircle, Twitter, Linkedin, Mail } from 'lucide-react';
-import { fadeInUp, staggerContainer, viewportOnce } from '../lib/animations';
-import { submitContact } from '../utils/api';
-import type { ContactFormData } from '../types';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Globe, Monitor } from 'lucide-react';
+import { CopyEmailButton } from './ui/copy-email-button';
+import MotionButton from './ui/motion-button';
 
-const socialLinks = [
-  { icon: Twitter, href: 'https://x.com/Rajo_7811', label: 'X (Twitter)' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/rajarshi-bhowmik-4419212b8', label: 'LinkedIn' },
+const EMAIL = 'bhowmickrajarshi38@gmail.com';
+const PHONE = '+91 8637553008';
+
+const emailClients = [
+  {
+    label: 'Gmail in browser',
+    icon: Globe,
+    href: `https://mail.google.com/mail/?view=cm&to=${EMAIL}`,
+  },
+  {
+    label: 'Outlook in browser',
+    icon: Globe,
+    href: `https://outlook.live.com/mail/0/deeplink/compose?to=${EMAIL}`,
+  },
+  {
+    label: 'Yahoo in browser',
+    icon: Globe,
+    href: `https://compose.mail.yahoo.com/?to=${EMAIL}`,
+  },
+  {
+    label: 'Default email app',
+    icon: Monitor,
+    href: `mailto:${EMAIL}`,
+  },
 ];
 
 export function Contact() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    website: '', // honeypot
-  });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    // Honeypot check
-    if (formData.website) {
-      return;
-    }
-
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      await submitContact(formData);
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'Failed to send message');
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const [open, setOpen] = useState(false);
 
   return (
-    <section id="contact" className="section bg-background-light dark:bg-background-dark">
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="max-w-4xl mx-auto"
-        >
-          <motion.h2 variants={fadeInUp} className="section-title text-center justify-center">
-            Get in Touch
-          </motion.h2>
+    <>
+      {/* Contact Section */}
+      <section id="contact" className="border-t border-border-light dark:border-border-dark">
+        <div className="flex flex-col md:flex-row min-h-[140px]">
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-text-muted-light dark:text-text-muted-dark mb-8 max-w-2xl mx-auto"
+          {/* Left — Reach Me At */}
+          <div className="flex-1 flex flex-col justify-center px-8 md:px-14 py-10 bg-card-light dark:bg-[#111]">
+            <p className="text-[10px] font-bold tracking-[0.2em] text-text-muted-light dark:text-text-muted-dark uppercase mb-4">
+              Reach Me At
+            </p>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-sm text-text-light dark:text-[#ccc] hover:text-primary dark:hover:text-primary transition-colors mb-1.5 w-fit"
+            >
+              {EMAIL}
+            </a>
+            <a
+              href={`tel:${PHONE.replace(/\s/g, '')}`}
+              className="text-sm text-text-light dark:text-[#ccc] hover:text-primary dark:hover:text-primary transition-colors w-fit"
+            >
+              {PHONE}
+            </a>
+          </div>
+
+          {/* Right — Say Hello */}
+          <div className="flex items-center justify-center px-14 py-10 min-w-[260px] bg-surface-light dark:bg-[#1c1c1c] border-t md:border-t-0 md:border-l border-border-light dark:border-white/10">
+            <MotionButton label="Say Hello." onClick={() => setOpen(true)} />
+          </div>
+
+        </div>
+      </section>
+
+      {/* MailtoUI Popup */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            DM me on{' '}
-            {socialLinks.map((link, index) => (
-              <span key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  {link.label}
-                </a>
-                {index < socialLinks.length - 1 ? ' or ' : ' '}
-              </span>
-            ))}
-            if you want to chat or hire me for internship or freelance.
-          </motion.p>
-
-          {/* Contact Form */}
-          <motion.form
-            variants={fadeInUp}
-            onSubmit={handleSubmit}
-            className="bg-card-light dark:bg-card-dark rounded-2xl p-6 md:p-8 border border-border-light dark:border-border-dark"
-          >
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-            </div>
-
-            {/* Subject */}
-            <div className="mt-6">
-              <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                placeholder="What's this about?"
-              />
-            </div>
-
-            {/* Message */}
-            <div className="mt-6">
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Message <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-3 rounded-xl bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                placeholder="Your message..."
-              />
-            </div>
-
-            {/* Honeypot - hidden from users */}
-            <input
-              type="text"
-              name="website"
-              value={formData.website}
-              onChange={handleChange}
-              className="hidden"
-              tabIndex={-1}
-              autoComplete="off"
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
             />
 
-            {/* Status Messages */}
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 p-4 rounded-xl bg-green-500/10 text-green-600 dark:text-green-400 flex items-center gap-2"
-              >
-                <Check className="w-5 h-5" />
-                Thanks for your message! I'll get back to you soon.
-              </motion.div>
-            )}
-
-            {status === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 p-4 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 flex items-center gap-2"
-              >
-                <AlertCircle className="w-5 h-5" />
-                {errorMessage || 'Something went wrong. Please try again.'}
-              </motion.div>
-            )}
-
-            {/* Submit Button */}
-            <motion.button
-              type="submit"
-              disabled={status === 'loading'}
-              className="mt-6 w-full md:w-auto px-8 py-3 bg-primary hover:bg-primary-dark text-white font-medium rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+            {/* Modal */}
+            <motion.div
+              className="relative w-full max-w-sm bg-[#1a1a1a] rounded-xl overflow-hidden shadow-2xl"
+              initial={{ scale: 0.92, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.92, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             >
-              {status === 'loading' ? (
-                <>
-                  <div className="spinner w-5 h-5 border-2 border-white/30 border-t-white" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="w-5 h-5" />
-                  Send Message
-                </>
-              )}
-            </motion.button>
-          </motion.form>
-        </motion.div>
-      </div>
-    </section>
+              {/* Header */}
+              <div className="flex items-center justify-between px-5 py-4 bg-[#222]">
+                <span className="text-sm font-medium text-white">Compose new email with</span>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Email client options */}
+              <div className="divide-y divide-white/10">
+                {emailClients.map(({ label, icon: Icon, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 px-5 py-4 hover:bg-white/5 transition-colors text-sm text-gray-200"
+                  >
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white/10">
+                      <Icon className="w-4 h-4" />
+                    </span>
+                    {label}
+                  </a>
+                ))}
+              </div>
+
+              {/* Copy row */}
+              <div className="border-t border-white/10 px-4 py-3">
+                <CopyEmailButton email={EMAIL} />
+              </div>
+
+              {/* Footer */}
+              <div className="px-5 py-3 bg-[#111] text-center">
+                <span className="text-xs text-gray-600">Powered by MailtoUI</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

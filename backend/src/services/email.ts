@@ -27,8 +27,12 @@ const createTransporter = () => {
 export const sendContactEmail = async (data: ContactEmailData): Promise<void> => {
   const { name, email, subject, message } = data;
 
-  // Check if email is configured
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  // Check if email is configured (reject obvious placeholder values)
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const isPlaceholder = (v?: string) =>
+    !v || v.startsWith('your-') || v === 'your-app-password';
+  if (isPlaceholder(smtpUser) || isPlaceholder(smtpPass)) {
     logger.warn('SMTP credentials not configured - skipping email send');
     return;
   }
