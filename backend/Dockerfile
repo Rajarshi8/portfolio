@@ -1,5 +1,5 @@
 # Backend Dockerfile
-FROM node:20-alpine AS base
+FROM node:25-alpine AS base
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -23,7 +23,7 @@ COPY . .
 RUN pnpm build
 
 # Production stage
-FROM node:20-alpine AS production
+FROM node:25-alpine AS production
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
